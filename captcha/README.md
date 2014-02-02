@@ -43,3 +43,8 @@ Captcha command
     python captcha ./homelink/test/1.jpg
 ```
 
+References:
+
+1. http://www.boyter.org/decoding-captchas/
+
+
