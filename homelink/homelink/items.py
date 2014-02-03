@@ -9,7 +9,10 @@ from scrapy.item import Item, Field
 class HomelinkItem(Item):
     # define the fields for your item here like:
     hid = Field()           #房屋id
-    title = Field()         #标题
+    address = Field()       #地址(Eg: 海淀 铭科苑)
+    house_style = Field()   #户型
+    room_number = Field()   #房间数
+    area = Field()          #面积
     date = Field()          #成交日期
     price = Field()         #成交价
     unit_price = Field()    #成交单价

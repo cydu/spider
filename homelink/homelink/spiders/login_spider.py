@@ -62,7 +62,11 @@ class LoginSpider(CrawlSpider):
             item = HomelinkItem()
             #style = house.xpath('@style').extract()[0]
             item['hid'] = house.xpath('h3//a/@href').re(u'/sold/(.*).shtml')[0]
-            item['title'] = "".join(house.xpath('h3//text()').extract())
+            title = ("".join(house.xpath('h3//text()').extract())).split(' ')
+            item['address'] = " ".join(title[0:2])
+            item['house_style'] = title[2]
+            item['room_number'] = int(filter(lambda x:x.isdigit(),title[2]))
+            item['area'] = int(filter(lambda x:x.isdigit(),title[3]))
             item['date'] = house.xpath('div[@class="price"]/ul/text()').extract()[0]
             item['price'] = "".join(house.xpath('div[@class="priceo"]/ul/span/text()').extract() + house.xpath('div[@class="priceo"]/ul/label/text()').extract())
             item['unit_price'] = "".join(house.xpath('div[@class="priceoo"]/ul/span/text()').extract() + house.xpath('div[@class="priceoo"]/ul/label/text()').extract())
