@@ -15,10 +15,13 @@ NEWSPIDER_MODULE = 'homelink.spiders'
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.102 Safari/537.36'
 COOKIES_DEBUG = False
 
-HOMELINK_USERNAME = "XXXXXXXXXXX"
-HOMELINK_PASSWORD = "XXXXXX"
+HOMELINK_USERNAME = "XXXX"
+HOMELINK_PASSWORD = "XXXX"
 HOMELINK_DOMAIN = "beijing.homelink.com.cn"
 HOMELINK_URL_PREFIX = "http://beijing.homelink.com.cn/"
 HOMELINK_LOGIN_URL = 'http://beijing.homelink.com.cn/webregister/login.php'
-HOMELINK_START_URL = "http://beijing.homelink.com.cn/sold/c1111027378318/rs铭科苑/"
+HOMELINK_START_URL = "http://beijing.homelink.com.cn/sold/c1111027378318/pg1rs铭科苑/"
 
+ITEM_PIPELINES = {
+    'homelink.pipelines.DuplicatesPipeline': 300
+}
