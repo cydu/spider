@@ -69,7 +69,11 @@ class LoginSpider(CrawlSpider):
             item['area'] = int(filter(lambda x:x.isdigit(),title[3]))
             item['date'] = house.xpath('div[@class="price"]/ul/text()').extract()[0]
             item['price'] = "".join(house.xpath('div[@class="priceo"]/ul/span/text()').extract() + house.xpath('div[@class="priceo"]/ul/label/text()').extract())
+            if item['price']:
+                item['price'] = int(filter(lambda x:x.isdigit(), item['price'])) 
             item['unit_price'] = "".join(house.xpath('div[@class="priceoo"]/ul/span/text()').extract() + house.xpath('div[@class="priceoo"]/ul/label/text()').extract())
+            if item['unit_price']:
+                item['unit_price'] = int(filter(lambda x:x.isdigit(), item['unit_price'])) 
             item['rise_rate'] = house.xpath('div[@class="priceooo"]/ul/text()').extract()[0]
             item['desc'] = "".join(house.xpath('div[@class="content"]/p[@class="clearfix"]/text()').extract())
             item['contact'] = house.xpath('div[@class="content"]/p[@class="clearfix"]/a/@href').extract()[0]
